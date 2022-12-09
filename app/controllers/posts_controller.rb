@@ -14,10 +14,20 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
+    #puts params
+    puts post_params
     @post = Post.new(post_params)
-
     if @post.save
       render json: @post, status: :created, location: @post
+    else
+      render json: @post.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /posts/:id
+  def update
+    if @post.update(post_params)
+      render json: @post
     else
       render json: @post.errors, status: :unprocessable_entity
     end

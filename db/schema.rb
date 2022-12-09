@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_054525) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_143224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,7 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_054525) do
     t.text "content"
     t.integer "stars"
     t.string "tag"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -78,7 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_054525) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "username", default: "", null: false
-    t.string "profile_picture"
     t.integer "stars"
     t.string "bio"
     t.datetime "created_at", null: false

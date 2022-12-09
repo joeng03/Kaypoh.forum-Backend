@@ -13,4 +13,6 @@ class User < ApplicationRecord
          has_many :posts, dependent: :destroy
          has_many :comments, dependent: :destroy
 
+         # has_one association with ActiveStorage::Attachment to help us store the user profile_picture 
+         has_one_attached :profile_picture
 end
