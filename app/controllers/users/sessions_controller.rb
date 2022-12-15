@@ -1,22 +1,18 @@
 class Users::SessionsController < Devise::SessionsController
     respond_to :json
-    
+
     private
 
-    def current_token
-        request.env['warden-jwt_auth.token']
-    end
-
     def respond_with(resource, _opts = {})
-        render json: { 
-            username: current_user.username,
-            email: current_user.email,
-            token: current_token
-        }, status: :ok
+      if current_user 
+        render json: current_user
+      else
+        render json: {error: "Unauthorized"}, status: :unauthorized
+      end
     end
 
     def respond_to_on_destroy
-      current_user ? log_out_success : log_out_failure
+      current_user ? log_out_failure : log_out_success
     end
 
     def log_out_success

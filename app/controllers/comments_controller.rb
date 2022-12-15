@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_comment, only: %i[ show update destroy ]
 
   # GET /comments
@@ -10,7 +11,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/:id
   def show
-    render json: @comment.as_json(except: [:user_id, :post_id],include: :user)
+    render json: @comment.as_json(except: [:user_id, :post_id], include: :user)
   end
 
   # POST /comments
@@ -26,16 +27,24 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/:id
   def update
-    if @comment.update(comment_params)
-      render json: @comment
+    if current_user.id == @comment.user_id
+      if @comment.update(comment_params)
+        render json: @comment
+      else
+        render json: @comment.errors, status: :unprocessable_entity
+      end
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: {error: "Not authorized to edit comment"}, status: :unauthorized
     end
   end
 
   # DELETE /comments/:id
   def destroy
-    @comment.destroy
+    if current_user.id == @comment.user_id
+      @comment.destroy
+    else
+      render json: {error: "Not authorized to delete comment"}, status: :unauthorized
+    end 
   end
 
   private
