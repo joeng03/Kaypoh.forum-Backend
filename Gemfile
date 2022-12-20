@@ -49,3 +49,4 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'active_model_serializers'
+gem 'kaminari'

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :posts
+  resources :posts do 
+    get '/page/:page', action: :index, on: :collection
+  end
   devise_for :users,
   path: '/users', path_names: {
     sign_in: 'login',

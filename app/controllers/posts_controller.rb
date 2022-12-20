@@ -1,11 +1,22 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_params, only: %i[index]
   before_action :set_post, only: %i[ show update destroy ]
 
   # GET /posts
   def index
     @posts = Post.all
 
+    if @column_name && @prefix
+      @posts=@posts.starts_with(@column_name, @prefix)
+    end
+
+    if @sort
+      @posts=@posts.order(@sort)
+    end 
+
+    @posts=@posts.page @page
+    
     render json: @posts
   end
 
@@ -16,7 +27,6 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    puts post_params
     @post = Post.new(post_params)
     
     if @post.save
@@ -29,7 +39,6 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/:id
   def update
     # A user can update a post only if the type of this PUT request is for starring a post, or they wrote it 
-    puts post_params
     if params[:type] == "star" or current_user.id == @post.user_id
       if @post.update(post_params)
         render json: @post
@@ -53,6 +62,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def set_params
+      @page = params[:page].present? ? params[:page].to_i : 1
+      @column_name = params[:column_name]
+      @prefix = params[:prefix]
+      @sort = params[:sort]
+    end 
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
