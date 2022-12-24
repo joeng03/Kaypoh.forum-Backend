@@ -1,6 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
-  def self.starts_with(column_name,prefix)
-    where("lower(#{column_name}) like ?","#{prefix.downcase}%" )
+  def self.contains(column_name, search_value)
+    where("lower(#{column_name}) like ?","%#{search_value.downcase}%" )
   end
 end

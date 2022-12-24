@@ -7,12 +7,17 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    if @column_name && @prefix
-      @posts=@posts.starts_with(@column_name, @prefix)
+    if @column_name && @search_value
+      @posts=@posts.contains(@column_name, @search_value)
     end
 
-    if @sort
-      @posts=@posts.order(@sort)
+    if @sort_by
+      if @sort_by == "stars"
+        #@posts=@posts.left_joins(:stars).group(:id).order("count(stars.id) DESC")
+        @posts=Post.ranked
+      else
+        @posts=@posts.order(@sort_by)
+      end
     end 
 
     @posts=@posts.page @page
@@ -39,7 +44,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/:id
   def update
     # A user can update a post only if the type of this PUT request is for starring a post, or they wrote it 
-    if params[:type] == "star" or current_user.id == @post.user_id
+    if current_user.id == @post.user_id
       if @post.update(post_params)
         render json: @post
       else
@@ -65,9 +70,9 @@ class PostsController < ApplicationController
 
     def set_params
       @page = params[:page].present? ? params[:page].to_i : 1
-      @column_name = params[:column_name]
-      @prefix = params[:prefix]
-      @sort = params[:sort]
+      @column_name = params[:columnName]
+      @search_value = params[:searchValue]
+      @sort_by = params[:sortBy]
     end 
 
     # Use callbacks to share common setup or constraints between actions.

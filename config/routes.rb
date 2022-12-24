@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts do 
     get '/page/:page', action: :index, on: :collection
   end
+  resources :stars
   devise_for :users,
   path: '/users', path_names: {
     sign_in: 'login',
