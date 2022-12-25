@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     if @sort_by
       if @sort_by == "stars"
         #@posts=@posts.left_joins(:stars).group(:id).order("count(stars.id) DESC")
-        @posts=Post.ranked
+        @posts=@posts.ranked
       else
         @posts=@posts.order(@sort_by)
       end

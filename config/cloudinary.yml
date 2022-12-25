@@ -1,0 +1,12 @@
+development:
+  cloud_name: dxy0byphl
+  api_key: <%= ENV['CLOUDINARY_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_SECRET'] %>
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dxy0byphl
+  api_key: <%= ENV['CLOUDINARY_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_SECRET'] %>
+  enhance_image_tag: true
+  static_file_support: true
