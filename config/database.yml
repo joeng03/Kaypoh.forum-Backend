@@ -88,6 +88,4 @@ test:
 #
 production:
   <<: *default
-  database: rails_api_psql_production
-  username: rails_api_psql
-  password: <%= ENV["RAILS_API_PSQL_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
