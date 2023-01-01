@@ -1,8 +1,13 @@
 class PostSerializer < ActiveModel::Serializer
   attributes :id, :title, :content, :tag, :created_at, :updated_at, :user, :image, :stars_count
 
+  def user
+    user = object.user.as_json
+    user[:profile_picture] = object.user.profile_picture.url
+    return user 
+  end
+
   def image
-    #Rails.application.routes.url_helpers.rails_blob_path(object.image, only_path: true) if object.image.attached?
     object.image.url if object.image.attached?
   end
 

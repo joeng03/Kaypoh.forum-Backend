@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_24_043050) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_044702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_043050) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "forums", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_forums_on_user_id"
+  end
+
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
@@ -86,7 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_043050) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "username", default: "", null: false
-    t.integer "stars"
     t.string "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_043050) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "forums", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "stars", "posts"
   add_foreign_key "stars", "users"

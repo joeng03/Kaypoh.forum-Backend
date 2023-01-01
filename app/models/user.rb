@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          :registerable,
          :validatable,
+         :rememberable,
          jwt_revocation_strategy: JwtDenylist
 
          # Associations
