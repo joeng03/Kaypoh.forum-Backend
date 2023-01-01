@@ -317,8 +317,7 @@ Devise.setup do |config|
     jwt.revocation_requests = [
       ['DELETE', %r{^/sign_out$}]
     ]
-    jwt.expiration_time = 1.minute.to_i
-    #30.day.to_i
+    jwt.expiration_time = 30.day.to_i
     
   end
 
