@@ -1,0 +1,13 @@
+.DS_Store
+.bin
+.env
+.git
+.gitignore
+.gitattributes
+Dockerfile
+README.md
+CODE_OF_CONDUCT.md
+tmp
+log
+test
+coverage/

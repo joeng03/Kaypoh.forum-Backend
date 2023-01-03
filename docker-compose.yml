@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  redis:
+    image: "redis:6-alpine"
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - "redis:/data"
+
+  db:
+    image: "postgres:15-alpine"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  web:
+    depends_on:
+      - "db"
+      - "redis"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/app
+    environment:
+      - DATABASE_HOST=db
+
+volumes:
+  redis:
+  postgres:

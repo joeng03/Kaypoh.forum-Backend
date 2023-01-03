@@ -116,6 +116,7 @@ GEM
     ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hiredis (0.6.3)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -248,6 +249,7 @@ DEPENDENCIES
   devise-jwt
   dotenv-rails
   ffi
+  hiredis
   kaminari
   pg (~> 1.1)
   puma (~> 5.0)
