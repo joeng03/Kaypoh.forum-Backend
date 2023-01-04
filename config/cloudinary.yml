@@ -5,6 +5,7 @@ development:
   enhance_image_tag: true
   static_file_support: false
   secure: true
+
 production:
   cloud_name: dxy0byphl
   api_key: <%= ENV['CLOUDINARY_KEY'] %>

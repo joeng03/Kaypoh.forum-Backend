@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
     # Associations
     belongs_to :user
+    belongs_to :topic
     has_many :comments, dependent: :destroy
     has_many :stars, dependent: :destroy
 
@@ -8,8 +9,13 @@ class Post < ApplicationRecord
     has_one_attached :image 
 
     # Rank posts by stars
-    scope :ranked, -> {
+    scope :stars_ranked, -> {
         order('stars_count DESC')
+    }
+
+    # Rank posts by comments
+    scope :comments_ranked, -> {
+        order('comments_count DESC')
     }
     
     # pagination using the kaminari gem

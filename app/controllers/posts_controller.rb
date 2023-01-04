@@ -13,10 +13,11 @@ class PostsController < ApplicationController
 
     if @sort_by
       if @sort_by == "stars"
-        #@posts=@posts.left_joins(:stars).group(:id).order("count(stars.id) DESC")
-        @posts=@posts.ranked
+        @posts = @posts.stars_ranked
+      elsif @sort_by == "comments"
+        @posts = @posts.comments_ranked
       else
-        @posts=@posts.order(@sort_by)
+        @posts = @posts.order(@sort_by)
       end
     end 
 
@@ -32,6 +33,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
+    puts @post_params
     @post = Post.new(post_params)
     
     if @post.save
@@ -82,6 +84,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:user_id, :title, :content, :stars, :tag, :image)
+      params.require(:post).permit(:user_id, :topic_id, :title, :content, :image)
     end
 end

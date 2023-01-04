@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :tag, :created_at, :updated_at, :user, :image, :stars_count
+  attributes :id, :title, :content, :topic, :created_at, :updated_at, :user, :image, :stars_count
 
   def user
     user = object.user.as_json
