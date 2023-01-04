@@ -7,6 +7,7 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
 
          # Associations
+         has_many :topics, dependent: :destroy
          has_many :posts, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :stars, dependent: :destroy
