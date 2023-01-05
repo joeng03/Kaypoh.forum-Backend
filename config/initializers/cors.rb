@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins ENV['FRONTEND_ORIGIN'] #ENV['VERCEL_ORIGIN'], ENV['NETLIFY_ORIGIN'] 
+      origins ENV['VERCEL_ORIGIN'], ENV['NETLIFY_ORIGIN'] ,# ENV['FRONTEND_ORIGIN']
 
       resource '*',
         headers: :any,          

@@ -6,15 +6,17 @@ RUN mkdir /app
 
 WORKDIR /app
 
+ENV RAILS_ENV production
+ENV RAILS_LOG_TO_STDOUT true
+
 COPY Gemfile Gemfile.lock ./
 
-RUN gem install bundler --no-document
-RUN bundle install --no-binstubs --jobs $(nproc) --retry 3
+RUN gem install bundler --no-document --without development test
+RUN bundle install --no-binstubs --jobs $(nproc)
 
 COPY . .
 
 RUN addgroup -g 1000 docker && adduser -G docker -g docker -s /bin/sh -D docker
 USER docker
 
-# Start the main process.
 CMD ["bundle", "exec", "rails", "server",  "-b", "0.0.0.0"]
