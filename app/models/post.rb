@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+    # Validations 
+    attr_readonly :user_id # Post author cannot be edited
+
     # Associations
     belongs_to :user
     belongs_to :topic, counter_cache: true

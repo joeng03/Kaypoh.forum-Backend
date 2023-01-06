@@ -46,7 +46,7 @@ group :development do
 end
 gem 'devise'
 gem 'devise-jwt'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'#, groups: [:development, :test]
 gem 'active_model_serializers'
 gem 'kaminari'
 gem 'cloudinary'

@@ -33,8 +33,8 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    puts @post_params
     @post = Post.new(post_params)
+    @post.user = current_user
     
     if @post.save
       render json: @post, status: :created, location: @post
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/:id
   def update
-    # A user can update a post only if the type of this PUT request is for starring a post, or they wrote it 
+    # A user can update a post only if they wrote it 
     if current_user.id == @post.user_id
       if @post.update(post_params)
         render json: @post
@@ -84,6 +84,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:user_id, :topic_id, :title, :content, :image)
+      params.require(:post).permit(:topic_id, :title, :content, :image)
     end
 end
