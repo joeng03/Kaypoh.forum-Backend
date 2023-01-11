@@ -219,6 +219,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    sentimental (1.5.0)
     thor (1.2.1)
     timeout (0.3.0)
     tzinfo (2.0.5)
@@ -261,6 +262,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4)
   redis
+  sentimental
   tzinfo-data
 
 RUBY VERSION

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.where(topic_id: @topics)
 
     if @column_name && @search_value
       @posts=@posts.contains(@column_name, @search_value)
@@ -72,6 +72,7 @@ class PostsController < ApplicationController
 
     def set_params
       @page = params[:page].present? ? params[:page].to_i : 1
+      @topics = params[:topics]
       @column_name = params[:columnName]
       @search_value = params[:searchValue]
       @sort_by = params[:sortBy]
