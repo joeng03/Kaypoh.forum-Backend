@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :posts do 
     get '/page/:page', action: :index, on: :collection
   end
-  resources :stars
+  resources :stars, only: [:create, :destroy]
+  resources :users, path:'/userprofiles', only: [:index, :show]
   devise_for :users,
   path: '/users', path_names: {
     sign_in: 'login',

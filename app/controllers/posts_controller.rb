@@ -5,8 +5,12 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.where(topic_id: @topics)
-
+    if @topics 
+      @posts = Post.where(topic_id: @topics)
+    else 
+      @posts = Post.all
+    end
+    
     if @column_name && @search_value
       @posts=@posts.contains(@column_name, @search_value)
     end

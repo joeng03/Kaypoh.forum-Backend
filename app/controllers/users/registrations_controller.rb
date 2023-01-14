@@ -1,6 +1,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
     respond_to :json
 
+    def show 
+      @user = User.find(params[:id])
+      render json: @user
+    end
+
     def create
         build_resource(sign_up_params)
     
