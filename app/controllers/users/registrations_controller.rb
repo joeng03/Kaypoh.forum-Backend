@@ -29,7 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
 
     def update
-      puts account_update_params
         self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
         prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
         
@@ -54,7 +53,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
       # Allows user to update registration information without password.
       resource.update_without_password(params.except('current_password'))
-      puts params.except('current_password')
     end
 
     private

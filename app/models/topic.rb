@@ -5,7 +5,7 @@ class Topic < ApplicationRecord
     validates :name, uniqueness: true
 
     # Associations
-    belongs_to :user, dependent: :destroy
+    belongs_to :user
     has_many :posts, dependent: :destroy
 
 end

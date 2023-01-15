@@ -12,8 +12,6 @@ class Users::SessionsController < Devise::SessionsController
     end
 
     def respond_to_on_destroy
-      puts 'abc'
-      puts current_user
       current_user ? log_out_success : log_out_failure
     end
 
