@@ -44,6 +44,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
 gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails'#, groups: [:development, :test]
@@ -52,3 +53,4 @@ gem 'kaminari'
 gem 'cloudinary'
 gem 'ffi'
 gem 'sentimental'
+gem 'rack-attack'

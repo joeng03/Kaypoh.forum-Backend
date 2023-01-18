@@ -84,4 +84,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # With consideration for performance, we do not currently open up the rate limiting functionality for production. 
+  # As the appplication scales, the rate limiting functionality shall be activated to prevent attacks or spams.
+  Rack::Attack.enabled = false
+
 end
