@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :topics
-  resources :forums
   resources :comments
   resources :posts do 
     get '/page/:page', action: :index, on: :collection

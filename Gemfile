@@ -54,3 +54,5 @@ gem 'cloudinary'
 gem 'ffi'
 gem 'sentimental'
 gem 'rack-attack'
+gem 'whenever', require: false
+gem 'rss'
