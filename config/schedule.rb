@@ -1,7 +1,6 @@
 set :output, 'log/whenever.log'
 
 every 1.day do
-    puts 'okokok'
     rake 'get_rss'
 end
 

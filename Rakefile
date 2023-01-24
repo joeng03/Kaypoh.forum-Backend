@@ -6,11 +6,11 @@ require_relative "config/application"
 Rails.application.load_tasks
 
 news_urls = {
-    # 'CNA'=> 'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416', 
-    # 'Reuters' => 'https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best',
-    # 'BBC'=> 'https://feeds.bbci.co.uk/news/world/rss.xml', 
-    # 'New York Times'=> 'https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml', 
-    # 'Al Jazeera'=> 'https://www.aljazeera.com/xml/rss/all.xml',
+    'CNA'=> 'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416', 
+    'Reuters' => 'https://www.reutersagency.com/feed/?taxonomy=best-regions&post_type=best',
+    'BBC'=> 'https://feeds.bbci.co.uk/news/world/rss.xml', 
+    'New York Times'=> 'https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml', 
+    'Al Jazeera'=> 'https://www.aljazeera.com/xml/rss/all.xml',
     'CNBC'=> 'https://www.cnbc.com/id/100727362/device/rss/rss.html'
 }
 topic_id = 15 # topic 'News'
