@@ -6,7 +6,7 @@ Matriculation number: A0255771X
 
 ## 👩💻 For Developers
 
-- [Frontend](README.md)
+- [Frontend](for-developers/frontend.md)
 - [Backend](for-developers/backend.md)
 - [Hosting Details](for-developers/hosting-details.md)
 
