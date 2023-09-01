@@ -1,8 +1,8 @@
 Name: Ng Yin Joe
 
-Matriculation number: A0255771X
+Frontend Repository: https://github.com/joeng03/Kaypoh.forum-Frontend
 
-Visit [this site](https://joeng03.gitbook.io/kaypoh.forum/) for a better view of the submissions.
+Visit [this GitBook site](https://joeng03.gitbook.io/kaypoh.forum/) for a better view of the submissions.
 
 # Table of contents
 
