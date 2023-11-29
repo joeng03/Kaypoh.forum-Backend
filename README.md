@@ -4,6 +4,13 @@ Frontend Repository: https://github.com/joeng03/Kaypoh.forum-Frontend
 
 Visit [this GitBook site](https://joeng03.gitbook.io/kaypoh.forum/) for a better view of the submissions.
 
+Admin Account:
+
+```
+Username: admin
+Password: kaypohforumreactredux
+```
+
 # Table of contents
 
 ## 👩💻 For Developers
